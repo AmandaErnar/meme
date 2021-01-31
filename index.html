@@ -1,7 +1,7 @@
 <!doctype html>
 
 <html lang="en">
-
+  <!-- IF YOU'RE READING THIS I HOPE YOU HAVE A WONDERFUL DAY-Amanda :) -->
   <head>
     <!-- bootstrap -->
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
     <style>
         * {
             text-align: center;
-            font-weight: 900;
-            font-family: "Nunito", sans-serif;
-            margin-top: 40px;
+            font-family: "Nelvetica", sans-serif;
+            font-style: italic;
+            margin-top: 0px;
         }
         #meme_text {
             background-color: transparent;
@@ -40,59 +40,53 @@
             input[type='file'] {
                 color: black;
         }
-        #navbar {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        #navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px;
-            text-decoration: none;
-        }
-
-        .content {
-            padding: 16px;
-        }
 
         .sticky {
             position: fixed;
             top: 0;
             width: 100%;
         }
-
-        .sticky + .content {
-            padding-top: 60px;
+        input[type=file] {
+            background-color: #f4511e;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 16px;
+            margin: 4px 2px;
+            opacity: 0;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer; 
         }
-      
     </style>
 
-    <div id="navbar">
-      <a href="#home">Meme Generator</a>
-      <a href="#news">Instructions</a>
-      <a href="#contact">FAQ</a>
-    </div>
 
     <!-- heading -->
-    <h1>Meme Maker</h1>
+    <h1>meme generator</h1>
 
   </head>
 
-
   <body>
 
-  <p>Instructions: Select a picture from your device and type anything into the input box. Then, screenshot (cmd + shift + 4)</p>
-  
-    <!-- picture input form -->
+    <div class="tab">
+      <button class="tablinks" onclick="showContentevent, 'meme-generator')">meme generator</button>
+      <button class="tablinks" onclick="showContent(event, 'faq')">faq</button>
+      <button class="tablinks" onclick="showContent(event, 'instructions')">instructions</button>
+    </div>
+
+<div id="meme-generator" class="tabcontent">
+  <h3>meme generator</h3>
+      <!-- picture input form -->
     <form>
-        Select a photo from your device.
+        select a photo from your device.
         </br>
-        <input type="file" name="file" style="color:transparent; width:70px;" id="user_picture" accept=".jpg,.jpeg,.png" onchange="update_image()"/>
-        </br>
-        Meme text:
+        <div class="button">
+          <input type="file" id="user_picture" accept=".jpg,.jpeg,.png,.heic" onchange="update_image()"/>
+        </div>
+          </br>
+        meme text:
         </br>
         <input type="text" id="user_text" oninput="update_text()" maxlength="70">
         <p>
@@ -100,14 +94,30 @@
     <!-- meme text -->
         <div class="container">
           <div id="meme_picture">
-            <img src="" alt="Meme Picture">
+            <img src="" alt="Meme Picture" width="500px" height="600px">
           </div>
          <div class="bottom-lmao">
           <div id="meme_text">&nbsp;</div>
          </div> 
         </div>
         
-        </br>
+      </br>
+</div>
+
+<div id="faq" class="tabcontent">
+  <h3>faq</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
+
+<div id="instructions" class="tabcontent">
+  <h3>instructions</h3>
+  <p>instructions: select a picture from your device and type anything into the input box. then, screenshot (cmd + shift + 4)</p>
+</div>
+  
+        <footer>
+          <p>(っ◔◡◔)っ ♥ made by amanda ernar with html ♥<p>
+          <p>haha ur feet r stinky</p>
+        </footer>
 
         <!-- javascript -->
     <script type="text/javascript">
@@ -136,6 +146,23 @@
             navbar.classList.remove("sticky");
           }
         }
+        function showContnet(evt, cityName) {
+          var i, tabcontent, tablinks;
+
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+    
     </script>
 
         <!-- more bootstrap -->
