@@ -1,14 +1,16 @@
 <!doctype html>
+
 <html lang="en">
+
   <head>
-    <!-- Required meta tags -->
+    <!-- bootstrap -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- css and browser -->
     <title>Amanda's Meme Generator</title>
+
     <style>
         * {
             text-align: center;
@@ -24,29 +26,57 @@
             text-shadow: black 0px 0px 10px;
             width: 600px;
         }
-        input[type='file'] {
-            color: black;
+        .container {
+            position: relative;
+            text-align: center;
+            color: white;
         }
+        .bottom-lmao {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+        }
+            input[type='file'] {
+                color: black;
+        }
+      
     </style>
-        <h1>Meme Generator</h1>
+
+    <!-- heading -->
+    <h1>Meme Maker</h1>
+
   </head>
 
+
   <body>
+
+  <p>Instructions: Select a picture from your device and type anything into the input box. Then, screenshot (cmd + shift + 4)</p>
+  
+    <!-- picture input form -->
     <form>
-        Select a picture
+        Select a photo from your device.
         </br>
-            <input type="file" style="color:transparent; width:70px;" id="user_picture" onchange="update_image()"/>
+        <input type="file" name="file" style="color:transparent; width:70px;" id="user_picture" accept=".jpg,.jpeg,.png" onchange="update_image()"/>
         </br>
-        </br>        
         Meme text:
         </br>
         <input type="text" id="user_text" oninput="update_text()" maxlength="70">
         <p>
     </form>
-        <div id="meme_text">&nbsp;</div>
+    <!-- meme text -->
+        <div class="container">
+          <div id="meme_picture">
+            <img src="" height="500" width="500" alt="Meme Picture">
+          </div>
+         <div class="bottom-lmao">
+          <div id="meme_text">&nbsp;</div>
+         </div> 
+        </div>
+        
         </br>
-        <div id="meme_picture"><img src="" height="500" width="500"></div>
-        <p> 
+
+        <!-- javascript -->
     <script type="text/javascript">
         function update_text(){
             var user_text = document.getElementById("user_text");
@@ -54,17 +84,22 @@
             meme_text.innerHTML = user_text.value;
         }
         function update_image(){
-            var img = document.querySelector("img"); 
+            var img = document.querySelector("img");
             var file = document.querySelector("input[type=file]").files[0];
             img.src =  window.URL.createObjectURL(file);
         }
+        function myFunction() {
+          var popup = document.getElementById("myPopup");
+          popup.classList.toggle("show");
+        }
     </script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+        <!-- more bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
   </body>
-</html>
 
+</html>
 
