@@ -10,7 +10,7 @@
 
     <!-- css and browser -->
     <title>Amanda's Meme Generator</title>
-
+    
     <style>
         * {
             text-align: center;
@@ -40,8 +40,41 @@
             input[type='file'] {
                 color: black;
         }
+        #navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        #navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        .content {
+            padding: 16px;
+        }
+
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .sticky + .content {
+            padding-top: 60px;
+        }
       
     </style>
+
+    <div id="navbar">
+      <a href="#home">Meme Generator</a>
+      <a href="#news">Instructions</a>
+      <a href="#contact">FAQ</a>
+    </div>
 
     <!-- heading -->
     <h1>Meme Maker</h1>
@@ -67,7 +100,7 @@
     <!-- meme text -->
         <div class="container">
           <div id="meme_picture">
-            <img src="" height="500" width="500" alt="Meme Picture">
+            <img src="" alt="Meme Picture">
           </div>
          <div class="bottom-lmao">
           <div id="meme_text">&nbsp;</div>
@@ -78,7 +111,11 @@
 
         <!-- javascript -->
     <script type="text/javascript">
-        function update_text(){
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+      
+      function update_text(){
             var user_text = document.getElementById("user_text");
             var meme_text = document.getElementById("meme_text");
             meme_text.innerHTML = user_text.value;
@@ -91,6 +128,13 @@
         function myFunction() {
           var popup = document.getElementById("myPopup");
           popup.classList.toggle("show");
+        }
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
         }
     </script>
 
